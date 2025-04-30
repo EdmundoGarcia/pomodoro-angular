@@ -1,1 +1,15 @@
 // @import 'bootstrap/dist/css/bootstrap.min.css'
+:root{
+    --background-night: url('/assets/images/night.gif');
+    --background-day: url('/assets/images/day.gif');
+}
+
+.light{
+    background: var(--background-day) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.night{
+    background: var(--background-night) no-repeat center center fixed;
+    background-size: cover;
+}
