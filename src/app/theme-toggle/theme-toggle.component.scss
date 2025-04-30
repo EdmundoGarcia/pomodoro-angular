@@ -1,0 +1,21 @@
+.btn{
+    left: 20px;
+    top: 20px;
+    position: fixed;
+    padding: .5rem 1rem;
+    border: black 1px solid;
+    border-radius: 5px;
+    background-color: #fff4;
+    color: white
+}
+
+.btn:hover{
+    background-color: #fff8;
+    color: black
+}
+
+img{
+    width: 30px;
+    height: 30px;
+}
+

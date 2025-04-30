@@ -7,16 +7,21 @@ import { ThemeService } from '../theme.service';
   styleUrls: ['./theme-toggle.component.scss']
 })
 export class ThemeToggleComponent implements OnInit {
-
-  constructor(private themeService: ThemeService) { }
+  isDarkMode: boolean = false;
+  constructor(private themeService: ThemeService) { 
+    this.isDarkMode = this.themeService.getTheme();
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    this.themeService.setTheme(theme);
+  }
 
   ngOnInit(): void {
-    this.themeService.setTheme(this.themeService.getTheme());
+
   }
 
   toggleTheme() {
-    const newTheme = document.body.classList.contains('light') ? 'night' : 'light';
-    this.themeService.setTheme(newTheme);
+    this.isDarkMode = !this.isDarkMode;
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    this.themeService.setTheme(theme);
   }
 
 }
