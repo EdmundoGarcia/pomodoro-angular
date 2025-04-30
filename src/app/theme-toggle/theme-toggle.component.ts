@@ -7,11 +7,9 @@ import { ThemeService } from '../theme.service';
   styleUrls: ['./theme-toggle.component.scss']
 })
 export class ThemeToggleComponent implements OnInit {
-  isDarkMode: boolean = false;
+  theme: string = 'light';
   constructor(private themeService: ThemeService) { 
-    this.isDarkMode = this.themeService.getTheme();
-    const theme = this.isDarkMode ? 'dark' : 'light';
-    this.themeService.setTheme(theme);
+    this.theme = this.themeService.getTheme();
   }
 
   ngOnInit(): void {
@@ -19,9 +17,8 @@ export class ThemeToggleComponent implements OnInit {
   }
 
   toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    const theme = this.isDarkMode ? 'dark' : 'light';
-    this.themeService.setTheme(theme);
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.theme);
   }
 
 }
