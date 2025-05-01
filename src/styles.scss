@@ -2,6 +2,8 @@
 :root{
     --background-dark: url('/assets/images/night.gif');
     --background-day: url('/assets/images/day.gif');
+    --background-work: url('/assets/images/work.gif');
+    --background-break: url('/assets/images/break.gif');
 }
 
 .light{
@@ -11,5 +13,16 @@
 
 .dark{
     background: var(--background-dark) no-repeat center center fixed;
+    background-size: cover;
+}
+.work{
+    background: var(--background-work) no-repeat center center fixed;
+    background-size: 100% 90%;
+    background-position: bottom;
+    
+}
+
+.break{
+    background: var(--background-break) no-repeat center center fixed;
     background-size: cover;
 }

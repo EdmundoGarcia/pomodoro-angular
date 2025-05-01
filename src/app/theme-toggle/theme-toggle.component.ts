@@ -8,6 +8,7 @@ import { ThemeService } from '../theme.service';
 })
 export class ThemeToggleComponent implements OnInit {
   theme: string = 'light';
+  
   constructor(private themeService: ThemeService) { 
     this.theme = this.themeService.getTheme();
   }
