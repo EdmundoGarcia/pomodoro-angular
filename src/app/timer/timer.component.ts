@@ -1,77 +1,87 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.scss']
+  styleUrls: ['./timer.component.scss'],
 })
-export class TimerComponent implements OnInit {
-
-  
-  workTime: number = 1 * 60;
-  breakTime: number = 0.5 * 60;
+export class TimerComponent {
+  workTime: number = 0.5 * 60;
+  breakTime: number = 0.3 * 60;
   timeLeft: number = this.workTime;
   isRunning: boolean = false;
-  isPaused: boolean = false;
   interval!: any;
   theme: string = 'light';
-  
+
   constructor(private themeService: ThemeService) {
     this.theme = this.themeService.getTheme();
     this.themeService.setTheme(this.theme);
-   }
-
-  ngOnInit(): void {
   }
 
-  setInitialTheme(){
-    this.themeService.setTheme('light');
-  }
-
-  startTimer(){
-    if(!this.isRunning){
+  startTimer() {
+    if (!this.isRunning) {
       this.isRunning = true;
-      this.isPaused = false;
-      this.themeService.setTheme('work');
+      if (this.theme !== 'work') {
+        this.theme = 'work';
+        this.themeService.setTheme(this.theme);
+      }
       this.interval = setInterval(() => {
-        if(this.timeLeft > 0){
+        if (this.timeLeft > 0) {
           this.timeLeft--;
         } else {
-          
           this.switchTheme();
-
         }
       }, 1000);
     }
   }
 
-  pauseTimer(){
-    if(this.isRunning){
+  pauseTimer() {
+    if (this.isRunning) {
       clearInterval(this.interval);
       this.isRunning = false;
-      this.isPaused = true;
     }
   }
 
-  resetTimer(){
+  resetTimer() {
     this.pauseTimer();
     this.timeLeft = this.theme === 'work' ? this.workTime : this.breakTime;
-    this.isPaused = false;
+    this.themeService.setTheme(this.theme);
   }
 
-  switchTheme(){
-    this.theme = this.theme === 'work' ? 'break' : 'work';
-    this.themeService.setTheme(this.theme);
-  
-    this.timeLeft = this.theme === 'work' ? this.workTime : this.breakTime;
-    this.startTimer();
-    
+  switchTheme() {
+    if (this.isRunning) {
+      clearInterval(this.interval);
+    }
+
+    const audio = new Audio('assets/sounds/mgs alert.mp3');
+    audio.play();
+
+    setTimeout(() => {
+      if (this.theme === 'work') {
+        this.theme = 'break';
+        this.timeLeft = this.breakTime;
+      } else {
+        this.theme = 'work';
+        this.timeLeft = this.workTime;
+      }
+      this.themeService.setTheme(this.theme);
+
+      if (this.isRunning) {
+        this.interval = setInterval(() => {
+          if (this.timeLeft > 0) {
+            this.timeLeft--;
+          } else {
+            this.switchTheme();
+          }
+        }, 1000);
+      }
+    }, 5000);
   }
 
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   }
 }

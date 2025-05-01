@@ -1,8 +1,12 @@
 <div class="container">
-    <!-- <div class="text">{{ theme === 'work'? 'Hora de chambear': 'Hora del break' }}</div> -->
-    <div class="text">{{ theme==='work' ? 'Hora de chambear' : 'Hora del break' }}</div>
+    <h1 class="text" *ngIf="theme==='light'">Pomodoro Timer</h1>
+    <h1 class="text" *ngIf="theme==='work'&& isRunning===true">Hora de chambear</h1>
+    <h1 class="text" *ngIf="theme==='dark'">Pomodoro</h1>
+    <h1 class="text" *ngIf="theme==='break'&& isRunning===true">Hora del break</h1>
+
+
     <div class="timer">{{ formatTime(timeLeft) }}</div>
     <button (click)="startTimer()" [disabled]="isRunning">Start</button>
-    <button (click)="pauseTimer()" [disabled]="isPaused">Pause</button>
+    <button (click)="pauseTimer()">Pause</button>
     <button (click)="resetTimer()">Reset</button>
 </div>
