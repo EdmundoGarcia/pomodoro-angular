@@ -12,3 +12,21 @@
 .clock{
     left: 80px
 }
+
+.task{
+    left: 140px;
+}
+
+.content {
+    display: flex;
+    justify-content:center;
+    
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  app-timer, app-task {
+    flex: 1;
+    max-width: 45%;
+    padding: 15px;
+}

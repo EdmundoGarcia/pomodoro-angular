@@ -9,11 +9,17 @@ import { ThemeService } from './theme.service';
 export class AppComponent {
   title = 'pomodoro-angular';
   showTimer: boolean = false;
+  showTask: boolean = false;
 
   constructor(private themeService: ThemeService) {
     this.themeService.setTheme('light');
   }
+
   toggleTimer() {
     this.showTimer = !this.showTimer;
+  }
+
+  toggleShowTasks(){
+    this.showTask = !this.showTask;
   }
 }

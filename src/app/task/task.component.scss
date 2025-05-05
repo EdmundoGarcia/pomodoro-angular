@@ -1,0 +1,48 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;                  
+    color: white;              
+    margin: 20px auto;  
+    min-height: 300px;
+    max-width: 600px;
+}
+  .add-task {
+    margin-bottom: 20px;
+  }
+  
+  .add-task input {
+    padding: 8px;
+    width: 70%;
+    margin-right: 10px;
+  }
+  
+  .add-task button {
+    padding: 8px 15px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  table th {
+    background-color: #bcbcbc;
+  }

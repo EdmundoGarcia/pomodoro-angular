@@ -9,11 +9,13 @@
 .light{
     background: var(--background-day) no-repeat center center fixed;
     background-size: cover;
+    color: black;
 }
 
 .dark{
     background: var(--background-dark) no-repeat center center fixed;
     background-size: cover;
+    color: white;
 }
 .work{
     background: var(--background-work) no-repeat center center fixed;

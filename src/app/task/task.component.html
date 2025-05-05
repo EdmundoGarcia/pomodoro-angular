@@ -1,0 +1,61 @@
+<div class="task-container text-white">
+
+    <h1>Task Manager</h1>
+  
+    <!-- Input for adding new tasks -->
+    <div class="add-task">
+      <input 
+        type="text" 
+        [(ngModel)]="newTaskName" 
+        placeholder="Enter new task" 
+      />
+      <button (click)="addTask()">
+        <i class="fas fa-plus"></i>
+    </button>
+    </div>
+  
+    <!-- Table to display tasks -->
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>
+            <!-- Show task name or input field based on edit mode -->
+            <span *ngIf="editTaskId !== task.id">{{ task.name }}</span>
+            <input 
+              *ngIf="editTaskId === task.id" 
+              [(ngModel)]="task.name" 
+            />
+          </td>
+          <td>{{ task.isFinished ? 'Finished' : 'Pending' }}</td>
+          <td>
+            <!-- Show edit/save/cancel buttons based on edit mode -->
+            <button *ngIf="editTaskId !== task.id" (click)="startEditing(task.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button *ngIf="editTaskId === task.id" (click)="saveTask(task.id, task.name)">
+                <i class="fas fa-save"></i>
+            </button>
+            <button *ngIf="editTaskId === task.id" (click)="cancelEditing()">
+                <i class="far fa-window-close"></i>
+            </button>
+            <button (click)="deleteTask(task.id)">
+                <i class="fas fa-trash"></i>
+            </button>
+            <button 
+              *ngIf="!task.isFinished" 
+              (click)="markAsFinished(task.id)"
+            >
+            <i class="fas fa-check"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
