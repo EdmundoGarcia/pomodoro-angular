@@ -1,13 +1,13 @@
 <div class="task-container text-white">
 
-    <h1>Task Manager</h1>
+    <h1>Tareas por hacer</h1>
   
     <!-- Input for adding new tasks -->
     <div class="add-task">
       <input 
         type="text" 
         [(ngModel)]="newTaskName" 
-        placeholder="Enter new task" 
+        placeholder="Ingrese nueva tarea" 
       />
       <button (click)="addTask()">
         <i class="fas fa-plus"></i>
@@ -18,9 +18,9 @@
     <table>
       <thead>
         <tr>
-          <th>Task</th>
+          <th>Tarea</th>
           <th>Status</th>
-          <th>Actions</th>
+          <th>Modificar</th>
         </tr>
       </thead>
       <tbody>
