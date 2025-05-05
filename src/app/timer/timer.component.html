@@ -1,12 +1,17 @@
-<div class="container">
-    <h1 class="text" *ngIf="theme==='light'">Pomodoro Timer</h1>
-    <h1 class="text" *ngIf="theme==='work'&& isRunning===true">Hora de chambear</h1>
-    <h1 class="text" *ngIf="theme==='dark'">Pomodoro</h1>
-    <h1 class="text" *ngIf="theme==='break'&& isRunning===true">Hora del break</h1>
 
-
-    <div class="timer">{{ formatTime(timeLeft) }}</div>
-    <button (click)="startTimer()" [disabled]="isRunning">Start</button>
-    <button (click)="pauseTimer()">Pause</button>
-    <button (click)="resetTimer()">Reset</button>
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="p-5 text-white"style="background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; min-height: 300px;">
+  
+        <h1 class="text" *ngIf="theme==='light'">Pomodoro Timer</h1>
+        <h1 class="text" *ngIf="theme==='work'&& isRunning===true">Hora de chambear</h1>
+        <h1 class="text" *ngIf="theme==='dark'">Pomodoro</h1>
+        <h1 class="text" *ngIf="theme==='break'&& isRunning===true">Hora del break</h1>
+    
+    
+        <div class="timer">{{ formatTime(timeLeft) }}</div>
+        <button (click)="startTimer()" [disabled]="isRunning">Start</button>
+        <button (click)="pauseTimer()">Pause</button>
+        <button (click)="resetTimer()">Reset</button>
+    </div>
+     
 </div>

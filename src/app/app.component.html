@@ -1,7 +1,15 @@
 <app-theme-toggle></app-theme-toggle>
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+<button class="btn clock" (click)="toggleTimer()">
+  <i class="fas fa-clock"></i>
+</button>
+<app-timer *ngIf="showTimer"></app-timer>
+
+
+
+<!-- <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
   <div class="p-5 text-white" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; min-height: 300px;">
-    <app-timer></app-timer>
+    <button (click)="toggleTimer()" class="btn">Show Timer</button>
+    <app-timer *ngIf="showTimer"></app-timer>
 
   </div>
-</div>
+</div> -->

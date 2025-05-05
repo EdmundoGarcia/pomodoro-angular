@@ -1,3 +1,4 @@
 <button class="btn" (click)="toggleTheme()">
-    <img [src]="theme === 'light' ? 'assets/images/day.svg' : 'assets/images/night.svg'" alt="Theme">
+    <!-- <img [src]="theme === 'light' ? 'assets/images/day.svg' : 'assets/images/night.svg'" alt="Theme"> -->
+    <i class="fa" [ngClass]="theme === 'light' ? 'fa-sun' : 'fa-moon'"></i>
 </button>

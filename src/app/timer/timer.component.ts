@@ -7,8 +7,8 @@ import { ThemeService } from '../theme.service';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent {
-  workTime: number = 0.5 * 60;
-  breakTime: number = 0.3 * 60;
+  workTime: number = 25 * 60;
+  breakTime: number = 5 * 60;
   timeLeft: number = this.workTime;
   isRunning: boolean = false;
   interval!: any;
